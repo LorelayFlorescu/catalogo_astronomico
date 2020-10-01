@@ -1,12 +1,12 @@
 package com.example.catalogoastronomico;
 
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class PlanetaTest {
-/*
+
    @Test
    public void crear_objeto_y_getters() {
       Estrella e = new Estrella("Estrella", 1.1, 2.2, 3, null);
@@ -15,7 +15,7 @@ public class PlanetaTest {
       assertEquals(1.1, a.getBrillo(), 1E-10);
       assertEquals(2.2, a.getDistancia(), 1E-10);
       assertEquals(false, a.isHabitado());
-      assertEquals(e, a.getSistemaSolar());
+      assertEquals(e, a.getEstrella());
    }
 
    @Test
@@ -26,12 +26,12 @@ public class PlanetaTest {
       a.setBrillo(-2.6);
       a.setDistancia(4.5);
       a.setHabitado(true);
-      a.setSistemaSolar(e);
+      a.setEstrella(e);
       assertEquals("nuevo", a.getNombre() );
       assertEquals(-2.6, a.getBrillo(), 1E-10);
       assertEquals(4.5, a.getDistancia(), 1E-10);
       assertEquals(true, a.isHabitado());
-      assertEquals(e, a.getSistemaSolar());
+      assertEquals(e, a.getEstrella());
    }
 
    @Test
@@ -48,7 +48,7 @@ public class PlanetaTest {
    public void toString_esCorrecto() {
       Estrella e = new Estrella("Alfa Centauri", -0.27, 4.5, 3, null);
       Planeta a = new Planeta("nombre", 1.1, 2.2 , false, e);
-      assertEquals("objeto-Astro {nombre: nombre, brillo: 1.1, distancia: 2.2, habitado: false, estrella: Alfa Centauri}", a.toString());
+      assertEquals("objeto-Astro {nombre: nombre, tipo: Planeta, brillo: 1.1, distancia: 2.2, habitado: false, estrella: Alfa Centauri}", a.toString());
    }
-//*/
+
 }

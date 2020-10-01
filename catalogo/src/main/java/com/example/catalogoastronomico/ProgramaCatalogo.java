@@ -37,7 +37,7 @@ public class ProgramaCatalogo {
                 galaxia = teclado.next().toLowerCase();
                 boolean tipoCorrecto = false;
                 do {
-                    System.out.println("Tipo estrella ENANA_AMARILLA (ea)|ENANA BLANCA (eb)|GIGANTE ROJA (gr)|SUBGIGANTE CLANCA (sb)>");
+                    System.out.println("Tipo estrella ENANA_AMARILLA (ea)|ENANA BLANCA (eb)|GIGANTE ROJA (gr)|SUBGIGANTE BLANCA (sb)>");
                     tipo = teclado.next().toLowerCase();
                     if (tipo.equals("ea") || tipo.equals("eb") || tipo.equals("gr") || tipo.equals("sb"))
                         tipoCorrecto = true;
@@ -120,7 +120,7 @@ public class ProgramaCatalogo {
         Astro exoplaneta = new Planeta("exoplaneta", 27, 2.537E16, false, (Estrella) alpheratz);
         ca.anade(exoplaneta);
 
-        System.out.println("CATÁLOGO:");
+        System.out.println("CATALOGO:");
         System.out.println("El catálogo tiene " + ca.getCatalogo().size() + " astros, que pertenecen a " + ca.getGalaxias().size() + " galaxia(s)");
         System.out.println(ca);
 

@@ -1,11 +1,12 @@
 package com.example.catalogoastronomico;
 
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import org.testng.annotations.Test;
+
+import static org.testng.AssertJUnit.assertEquals;
 
 public class GalaxiaTest {
-/*
+
    @Test
    public void crear_objeto_y_getters() {
       Galaxia a = new Galaxia("nombre", 1.1, 2.2 );
@@ -38,7 +39,7 @@ public class GalaxiaTest {
    @Test
    public void toString_esCorrecto() {
       Galaxia a = new Galaxia("Andromeda", -1.42, 8.7);
-      assertEquals("objeto-Astro {nombre: Andromeda, brillo: -1.42, distancia: 8.7}", a.toString());
+      assertEquals("objeto-Astro {nombre: Andromeda, tipo: Galaxia, brillo: -1.42, distancia: 8.7}", a.toString());
    }
 
    @Test
@@ -70,5 +71,5 @@ public class GalaxiaTest {
       a.setBrillo(26);
       assertEquals("con grandes telescopios", a.visibleCon());
    }
-//*/
+
 }
