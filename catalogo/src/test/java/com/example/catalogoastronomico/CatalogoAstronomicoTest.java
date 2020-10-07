@@ -5,14 +5,17 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertNull;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class CatalogoAstronomicoTest {
 
    @Test
    public void crear_objeto_vacio() {
       CatalogoAstronomico c = new CatalogoAstronomico();
-      assertEquals(true, c.getCatalogo().isEmpty());
-      assertEquals(true, c.getGalaxias().isEmpty());
+      assertTrue(c.getCatalogo().isEmpty());
+      assertTrue(c.getGalaxias().isEmpty());
       assertEquals(new ArrayList<Astro>(), c.filtraEstrellasSimpleVista());
    }
 
@@ -24,7 +27,7 @@ public class CatalogoAstronomicoTest {
       c.anade(e);
       assertEquals(2, c.getCatalogo().size());
       assertEquals(1, c.getGalaxias().size());
-      assertEquals(true, c.getGalaxias().contains(g.getNombre()));
+      assertTrue(c.getGalaxias().contains(g.getNombre()));
       assertEquals(1, c.filtraEstrellasSimpleVista().size());
       assertEquals(1, c.getNumEstrellasSimpleVista());
    }
@@ -37,7 +40,7 @@ public class CatalogoAstronomicoTest {
       c.anade(e);
       assertEquals(2, c.getCatalogo().size());
       assertEquals(1, c.getGalaxias().size());
-      assertEquals(true, c.getGalaxias().contains(g.getNombre()));
+      assertTrue(c.getGalaxias().contains(g.getNombre()));
       assertEquals(0, c.filtraEstrellasSimpleVista().size());
       assertEquals(0, c.getNumEstrellasSimpleVista());
    }
@@ -51,8 +54,8 @@ public class CatalogoAstronomicoTest {
       c.anade(g2);
       assertEquals(1, c.getCatalogo().size());
       assertEquals(1, c.getGalaxias().size());
-      assertEquals(true, c.getGalaxias().contains(g.getNombre()));
-      assertEquals(true, c.getGalaxias().contains(g2.getNombre()));
+      assertTrue(c.getGalaxias().contains(g.getNombre()));
+      assertTrue(c.getGalaxias().contains(g2.getNombre()));
    }
 
    @Test
@@ -62,11 +65,11 @@ public class CatalogoAstronomicoTest {
       Estrella e = new Estrella("estrella", 4, 2.2, 3, g);
       c.anade(e);
       c.borrar("estrella");
-      assertEquals(false, c.getCatalogo().isEmpty());
-      assertEquals(false, c.getGalaxias().isEmpty());
+      assertFalse(c.getCatalogo().isEmpty());
+      assertFalse(c.getGalaxias().isEmpty());
       assertEquals(0, c.filtraEstrellasSimpleVista().size());
       assertEquals(0, c.getNumEstrellasSimpleVista());
-      assertEquals(true, c.getGalaxias().contains(g.getNombre()));
+      assertTrue(c.getGalaxias().contains(g.getNombre()));
    }
 
    @Test
@@ -86,7 +89,7 @@ public class CatalogoAstronomicoTest {
       Estrella e = new Estrella("estrella", 4, 2.2, 3, g);
       Estrella e2 = new Estrella("estrella2", 3, 2.2, 3, g);
       Estrella e3 = new Estrella("estrella3", 3.5, 2.2, 3, g);
-      assertEquals(null, c.primeroMasBrillanteQue(e3));
+      assertNull(c.primeroMasBrillanteQue(e3));
       c.anade(e3);
       c.anade(e);
       assertEquals(e3, c.primeroMasBrillanteQue(e2));
@@ -103,9 +106,9 @@ public class CatalogoAstronomicoTest {
       c.anade(e2);
       c.anade(e3);
       assertEquals(2, c.filtraEstrellasSimpleVista().size());
-      assertEquals(true, c.filtraEstrellasSimpleVista().indexOf(e) != -1);
-      assertEquals(true, c.filtraEstrellasSimpleVista().indexOf(e2) == -1);
-      assertEquals(true, c.filtraEstrellasSimpleVista().indexOf(e3) != -1);
+      assertTrue(c.filtraEstrellasSimpleVista().indexOf(e) != -1);
+      assertTrue(c.filtraEstrellasSimpleVista().indexOf(e2) == -1);
+      assertTrue(c.filtraEstrellasSimpleVista().indexOf(e3) != -1);
    }
 
    @Test

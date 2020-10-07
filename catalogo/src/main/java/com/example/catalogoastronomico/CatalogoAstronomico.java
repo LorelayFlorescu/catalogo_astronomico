@@ -27,11 +27,11 @@ public class CatalogoAstronomico {
 
     }
 
-    public List getCatalogo() {
+    public List<Astro> getCatalogo() {
         return catalogo;
     }
 
-    public Set getGalaxias() {
+    public Set<String> getGalaxias() {
         return galaxias;
     }
 
@@ -49,41 +49,45 @@ public class CatalogoAstronomico {
     //Añade un astro al catálogo (compueba que no esté repetido) y devuelve true si se ha podido añadir
     public boolean anade(Astro a){
 
+        boolean encontrado = false;
 
-    /*
-        if(!catalogo.contains(a) || !galaxias.contains(((Galaxia)a).getNombre())) {
-            catalogo.add(a);
-
-            if(a.visibleCon().equals("a simple vista"))
-                numEstrellasSimpleVista++;
-
-            if(a instanceof Estrella){
-                if(!galaxias.contains(((Estrella) a).getGalaxia().getNombre()))
-                    galaxias.add(((Estrella) a).getGalaxia().getNombre());
-                if(!catalogo.contains(((Estrella) a).getGalaxia())){
-                    catalogo.add(((Estrella) a).getGalaxia());
-                }
-            }
-
-            if(a instanceof Galaxia){
-                if(!galaxias.contains(((Galaxia)a).getNombre()))
-                    galaxias.add(((Galaxia)a).getNombre());
-                }
-
-            if(a instanceof Planeta){
-                if(!galaxias.contains(((Planeta)a).getEstrella().getGalaxia().getNombre()))
-                    galaxias.add(((Planeta)a).getEstrella().getGalaxia().getNombre());
-                if(!catalogo.contains(((Planeta) a).getEstrella().getGalaxia())) {
-                    catalogo.add(((Planeta) a).getEstrella().getGalaxia());
-                }
-                if(!catalogo.contains(((Planeta) a).getEstrella())) {
-                    catalogo.add(((Planeta) a).getEstrella());
-                }
-            }
-            return true;
+        for(int i = 0; i<catalogo.size(); i++){
+            if(((catalogo.get(i)).getNombre()).equals(a.getNombre()))
+                encontrado = true;
         }
 
-        */
+        if (!catalogo.contains(a) && !encontrado) {
+
+                catalogo.add(a);
+
+                if (a.visibleCon().equals("a simple vista") && !(a instanceof Galaxia))
+                    numEstrellasSimpleVista++;
+
+                if (a instanceof Galaxia && !galaxias.contains(((Galaxia) a).getNombre())) {
+                    galaxias.add(((Galaxia) a).getNombre());
+                }
+
+                if (a instanceof Estrella) {
+                    if (!galaxias.contains(((Estrella) a).getGalaxia().getNombre()))
+                        galaxias.add(((Estrella) a).getGalaxia().getNombre());
+                    if (!catalogo.contains(((Estrella) a).getGalaxia())) {
+                        catalogo.add(((Estrella) a).getGalaxia());
+                    }
+                }
+
+                if (a instanceof Planeta) {
+                    if (!galaxias.contains(((Planeta) a).getEstrella().getGalaxia().getNombre()))
+                        galaxias.add(((Planeta) a).getEstrella().getGalaxia().getNombre());
+                    if (!catalogo.contains(((Planeta) a).getEstrella().getGalaxia())) {
+                        catalogo.add(((Planeta) a).getEstrella().getGalaxia());
+                    }
+                    if (!catalogo.contains(((Planeta) a).getEstrella())) {
+                        catalogo.add(((Planeta) a).getEstrella());
+                    }
+                }
+                return true;
+            }
+
         return false;
 
     }
@@ -92,13 +96,12 @@ public class CatalogoAstronomico {
     public void borrar(String nombre){
 
         for(int i=0; i<catalogo.size(); i++){
-            if((catalogo.get(i).getNombre()).equals(nombre)){
+            if(catalogo.get(i).getNombre().equals(nombre)){
                 catalogo.remove(i);
-                if(catalogo.get(i).visibleCon().equals("a simple vista"))
+
+                if(esEstrellaSimpleVista(i))
                     numEstrellasSimpleVista--;
             }
-
-
         }
     }
 
@@ -133,7 +136,7 @@ public class CatalogoAstronomico {
         List<Astro> astrosFiltrados = new ArrayList<Astro>();
 
         for(int i = 0; i<catalogo.size(); i++){
-            if(catalogo.get(i).visibleCon().equals("a simple vista")  && catalogo.get(i) instanceof Estrella ||
+            if(esEstrellaSimpleVista(i)  && catalogo.get(i) instanceof Estrella ||
                     catalogo.get(i) instanceof EstrellaConTipo) {
                 astrosFiltrados.add(catalogo.get(i));
 
